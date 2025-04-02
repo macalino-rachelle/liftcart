@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:liftcart/orderview.dart';
 import 'package:flutter/material.dart';
+import 'variables.dart';
 import 'package:http/http.dart' as http;
 
 void main() => runApp(
@@ -19,7 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future<void> checkdatabase() async {
-    final response = await http.get(Uri.parse(server + "dbcon.php"));
+    final response = await http.get(Uri.parse("${server}dbcon.php"));
     print(response.body);
   }
 
