@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:liftcart/cart.dart';
 import 'package:liftcart/main.dart';
+import 'package:liftcart/orderviewreceipt.dart';
+import 'package:liftcart/purchased.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'variables.dart';
@@ -191,6 +193,14 @@ class _ProductsState extends State<Products> {
                       color: CupertinoColors.white,
                     ),
                     onPressed: () {
+                      btnState
+                          ? Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => Purchased(),
+                            ),
+                          )
+                          : null;
                     },
                   ),
                 ],
@@ -317,6 +327,12 @@ class _ProductsState extends State<Products> {
                         btnState = true;
                       });
                       Timer(Duration(seconds: 1), () {
+                        Navigator.pushReplacement(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => PurchasedDone(),
+                          ),
+                        );
                       });
                     });
 
