@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
+import 'package:liftcart/cart.dart';
 import 'package:liftcart/main.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -173,7 +174,14 @@ class _ProductsState extends State<Products> {
                       CupertinoIcons.cart_fill,
                       color: CupertinoColors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      btnState
+                          ? Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(builder: (context) => Cart()),
+                          )
+                          : null;
+                    },
                   ),
 
                   CupertinoButton(
