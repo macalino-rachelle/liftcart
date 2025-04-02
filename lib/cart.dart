@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:liftcart/orderview.dart';
+import 'package:liftcart/orderviewreceipt.dart';
 import 'dart:convert';
 import 'variables.dart';
 
@@ -116,6 +117,11 @@ class _CartState extends State<Cart> {
                 );
 
                 Timer(Duration(seconds: 3), () {
+                  Navigator.of(context).pop();
+                  Navigator.pushReplacement(
+                    context,
+                    CupertinoPageRoute(builder: (context) => PurchasedDone()),
+                  );
                 });
 
                 getcartData();
