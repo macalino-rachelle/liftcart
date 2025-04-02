@@ -17,7 +17,7 @@ class _CartState extends State<Cart> {
   List<int> quantities = [];
   @override
   Future<void> getcartData() async {
-    final response = await http.get(Uri.parse("${server}cart.php"));
+    final response = await http.get(Uri.parse(server + "cart.php"));
 
     setState(() {
       productcart = jsonDecode(response.body);
@@ -32,7 +32,6 @@ class _CartState extends State<Cart> {
     super.initState();
   }
 
-  @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
@@ -59,7 +58,7 @@ class _CartState extends State<Cart> {
 
             Future<void> delete_itemcart() async {
               final response = await http.post(
-                Uri.parse("${server}delete_itemcart.php"),
+                Uri.parse(server + "delete_itemcart.php"),
                 body: {"id": item[index]["id"]},
               );
               print(response.body);
@@ -79,7 +78,7 @@ class _CartState extends State<Cart> {
 
             Future<void> buyNow() async {
               final response = await http.post(
-                Uri.parse("${server}cartbuy.php"),
+                Uri.parse(server + "cartbuy.php"),
                 body: {
                   "cartid": item[index]["cartid"].toString(),
                   "productid": item[index]["id"].toString(),

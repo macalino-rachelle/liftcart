@@ -34,7 +34,7 @@ class _ProductsState extends State<Products> {
         });
       });
 
-      final response = await http.get(Uri.parse("${server}product_view.php"));
+      final response = await http.get(Uri.parse(server + "product_view.php"));
 
       if (response.statusCode == 200) {
         setState(() {
@@ -93,7 +93,6 @@ class _ProductsState extends State<Products> {
     super.initState();
   }
 
-  @override
   Widget build(BuildContext context) {
     return systemLoading
         ? CupertinoPageScaffold(
@@ -165,7 +164,7 @@ class _ProductsState extends State<Products> {
               },
             ),
 
-            trailing: SizedBox(
+            trailing: Container(
               width: MediaQuery.of(context).size.width * 0.5,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -217,7 +216,7 @@ class _ProductsState extends State<Products> {
                 Future<void> addtoCart() async {
                   try {
                     final response = await http.post(
-                      Uri.parse("${server}addtocart.php"),
+                      Uri.parse(server + "addtocart.php"),
                       body: {
                         "productid": item[index]["id"],
                         "stock": quantities[index].toString(),
@@ -279,7 +278,7 @@ class _ProductsState extends State<Products> {
 
                 Future<void> buy() async {
                   final response = await http.post(
-                    Uri.parse("${server}buy.php"),
+                    Uri.parse(server + "buy.php"),
                     body: {
                       "productid": item[index]["id"],
                       "name": item[index]["name"],

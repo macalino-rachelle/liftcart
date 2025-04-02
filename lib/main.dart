@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:liftcart/inventory.dart';
 import 'package:liftcart/orderview.dart';
 import 'package:flutter/material.dart';
 import 'variables.dart';
@@ -21,7 +22,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future<void> checkdatabase() async {
-    final response = await http.get(Uri.parse("${server}dbcon.php"));
+    final response = await http.get(Uri.parse(server + "dbcon.php"));
     print(response.body);
   }
 
@@ -33,7 +34,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
@@ -331,6 +331,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => InventoryManagement(),
+                      ),
+                    );
                   },
                 ),
               ),
